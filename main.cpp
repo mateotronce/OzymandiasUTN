@@ -6,28 +6,47 @@ using namespace std;
 
 int main()
 {
+    int opcion;
 
-    cout << "-----Lista simbolos-----" << endl 
-         << "Cristal comun = ◊" << endl 
-         << "Cristal azul  = ◈" << endl
-         << "DEA = [D]" << endl 
-         << "Pollos Hermanos = <°)" << endl
-         << "------------------------" << endl;
+    do{
 
-    int ww[3] = {0,0,0}; // litros , plata_dia , plata_banco
+    cout << "Menu principal" << endl;
+    cout << "--------------" << endl;
+    cout << "1 - Jugar" << endl;
+    cout << "2 - Estadisticas" << endl;
+    cout << "3 - Creditos" << endl;
+    cout << "--------------" << endl;
+    cout << "0 - Salir" << endl;
+    cout <<"Ingrese una opcion: ";
+    cin >> opcion;
 
-    for (int dia = 1; dia <= 6; dia++)
-    {
-        int dados[3] = {};
+    switch(opcion){
+        case 1:
+            //Juego();
+            break;
+        case 2:
+            //Estadisticas();
+            break;
+        case 3:
+            //Creditos();
+            break;
+        case 0:
+            if(salir()== false){
+                opcion = -1;
+            }
+            break;
+        default:
+            system("cls");
+            cout << "Ingrese opcion valida" << endl;
+            break;
 
-        cout << "Dia " << dia << endl;
 
-        lanzarDados(dados);
+    }
 
-        cout << "Valores de los dados : " << simbolo_dado(dados[0]) << " " << simbolo_dado(dados[1]) << " " << simbolo_dado(dados[2]) << endl;
+
+    }while(opcion != 0);
+
+
     
-
-    };
-
     return 0;
 }

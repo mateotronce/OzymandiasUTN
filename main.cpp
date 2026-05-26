@@ -31,7 +31,7 @@ int main()
             //Creditos();
             break;
         case 0:
-            if(Salir()== false){
+            if(salir()== false){
                 opcion = -1;
             }
             break;

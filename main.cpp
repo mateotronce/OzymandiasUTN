@@ -10,6 +10,8 @@ int main()
 
     do{
 
+    system("cls");
+        
     cout << "Menu principal" << endl;
     cout << "--------------" << endl;
     cout << "1 - Jugar" << endl;
@@ -28,7 +30,7 @@ int main()
             //Estadisticas();
             break;
         case 3:
-            //Creditos();
+            creditos();
             break;
         case 0:
             if(salir()== false){
@@ -38,6 +40,7 @@ int main()
         default:
             system("cls");
             cout << "Ingrese opcion valida" << endl;
+            system("pause");
             break;
 
 

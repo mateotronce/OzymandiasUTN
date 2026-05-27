@@ -6,6 +6,8 @@ using namespace std;
 
 bool salir();
 
+void creditos();
+
 
 void lanzarDados(int resultado[3]);
 

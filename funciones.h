@@ -4,6 +4,30 @@
 
 using namespace std; 
 
+
+struct Jugador
+{
+    float litros_turno;
+    float plata_turno;
+    float plata_banco;
+    int dea;
+    int kilos_turno;
+    int pollos_hermanos;
+};
+
+
+struct EstadoDia
+{
+    float litros_metalamina = 20;
+    int kilos_minimos = 4;
+    int dea_limite = 3;
+    bool cristal_azul_degradado = false;
+    bool saul_activo = false;
+    bool danger_activo = false;
+};
+
+
+
 bool salir();
 
 void creditos();
@@ -12,5 +36,13 @@ void creditos();
 void lanzarDados(int resultado[3]);
 
 string simbolo_dado(int valor);
+
+void turno(Jugador &j, EstadoDia &dia);
+
+void reset_turno (Jugador &j, EstadoDia &dia);
+
+void mostrar_estadisticas (Jugador &w) ;
+
+void modificadorJugador(Jugador &j , EstadoDia &d ,int dado);
 
 #endif // FUNCIONES_H_INCLUDED

@@ -24,7 +24,7 @@ int main()
 
     switch(opcion){
         case 1:
-            //Juego();
+            juego();
             break;
         case 2:
             //Estadisticas();

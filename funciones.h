@@ -13,6 +13,7 @@ struct Jugador
     int dea;
     int kilos_turno;
     int pollos_hermanos;
+    string nombre;
 };
 
 
@@ -30,6 +31,8 @@ struct EstadoDia
 
 bool salir();
 
+void pedirNombres(Jugador &j1, Jugador &j2);
+
 void creditos();
 
 
@@ -43,6 +46,12 @@ void reset_turno (Jugador &j, EstadoDia &dia);
 
 void mostrar_estadisticas (Jugador &w) ;
 
+void mostrarEstadisticasSimples (Jugador &w);
+
 void modificadorJugador(Jugador &j , EstadoDia &d ,int dado);
+
+void juego();
+
+void condicionesJuego(Jugador &j, EstadoDia &dia, bool &continua, bool &primer_pasada, int num_dia);
 
 #endif // FUNCIONES_H_INCLUDED

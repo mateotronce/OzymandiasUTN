@@ -80,6 +80,7 @@ void modificadorJugador(Jugador &j , EstadoDia &d ,int dado){
             j.dea = 0;
             j.plata_turno += 100000;
             j.pollos_hermanos = 0;
+            cout << "Ganaste el favor de gus" << endl;
         }
 
         break;

@@ -7,8 +7,12 @@ void turno(Jugador &j, EstadoDia &dia)
 
     int dados[3] = {};
 
-    lanzarDados(dados);
+    srand(time(nullptr));
 
+    for (int i = 0; i < 3 ; i++  ) {
+        dados[i] = lanzarDados();
+    }
+    
     cout << "Valores de los dados : " ;
     for (int dado : dados) {
         cout << simbolo_dado(dado) << " ";

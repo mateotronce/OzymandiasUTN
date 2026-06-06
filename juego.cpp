@@ -11,12 +11,6 @@ using namespace std;
 
 void juego() {
 
-    cout << "-----Lista simbolos-----" << endl
-         << "Cristal comun = ◊" << endl
-         << "Cristal azul  = ◈" << endl
-         << "DEA = [D]" << endl
-         << "Pollos Hermanos = <°)" << endl
-         << "------------------------\n" << endl;
 
     Jugador w = {0, 0, 0, 0, 0};
     Jugador g = {0, 0, 0, 0, 0};

@@ -11,10 +11,10 @@ int lanzarDados(){
 
 
 string simbolo_dado(int valor){
-    string cristal1 = "◊";
-    string cristal2 = "◈";
-    string pollo = "<°)";
-    string dea = "[D]";
+    string cristal1 = "[CRISTAL COMUN]";
+    string cristal2 = "[CRISTAL AZUL]";
+    string pollo = "[POLLO]";
+    string dea = "[DEA]";
 
     switch (valor)
     {

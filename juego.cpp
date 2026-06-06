@@ -108,6 +108,18 @@ void juego() {
         if (!victoria && i < 6) {
             cout << "\nPresiona Enter para continuar al dia " << i + 1 << "..." << endl;
             cin.get();
+        }else if(i == 6){
+            if(g.plata_banco > w.plata_banco){
+                cout << endl << "El ganador de esta partida fue " << g.nombre << endl << endl;
+            }
+            if(w.plata_banco > g.plata_banco){
+                cout << endl << "El ganador de esta partida fue " << w.nombre << endl << endl;
+            }
+            if(g.plata_banco == w.plata_banco){
+                cout << endl << "Empataron, Gus Fring los considera químicos excepcionales por igual y ambos comparten el control del superlaboratorio. " << endl << endl;
+            }
+
+            system("pause");
         }
         
     }

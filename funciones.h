@@ -65,4 +65,11 @@ void condicionesJuego(Jugador &j, EstadoDia &dia, bool &continua, bool &primer_p
 
 void mod_cartas(EstadoDia &e);
 
+void carta_la_mosca();
+void carta_mike();
+void carta_ding();
+void carta_science();
+void carta_saul();
+void carta_danger();
+
 #endif // FUNCIONES_H_INCLUDED

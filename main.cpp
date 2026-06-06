@@ -7,6 +7,7 @@ using namespace std;
 int main()
 {
     int opcion;
+    setlocale(LC_ALL, "Spanish");
 
     do{
 

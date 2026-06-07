@@ -67,10 +67,14 @@ void menuFinal(Jugador &g, Jugador &w){
     }else if(g.cant_allanado < w.cant_allanado){
         g.cant_allanado = 0;
         w.cant_allanado = 25000;
-    }else if(g.cant_allanado == w.cant_allanado){
+    }else if(g.cant_allanado == w.cant_allanado && (g.cant_allanado != 0 || w.cant_allanado != 0)){
         g.cant_allanado = 25000;
         w.cant_allanado = 25000;
+    }else{
+        g.cant_allanado = 0;
+        w.cant_allanado = 0;
     }
+        
 
     //Calculo plata final y ganador
     g.plata_final_banco = g.plata_banco + g.plata_turno_max + g.favor_gus_total + g.cant_dia_plantado + tirada_perfectag + g.cant_allanado;

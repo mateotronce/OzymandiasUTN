@@ -9,10 +9,17 @@ struct Jugador
 {
     float litros_turno;
     float plata_turno;
+    float plata_turno_max;
     float plata_banco;
+    float plata_final_banco;
+    int favor_gus_total;
+    int cant_dia_plantado;
+    int cant_allanado;
     int dea;
     int kilos_turno;
     int pollos_hermanos;
+    int kilos_azul_total;
+    bool tirada_perfecta = false;
     string nombre;
 };
 
@@ -71,5 +78,7 @@ void carta_ding();
 void carta_science();
 void carta_saul();
 void carta_danger();
+
+void menuFinal(Jugador &g, Jugador &w);
 
 #endif // FUNCIONES_H_INCLUDED

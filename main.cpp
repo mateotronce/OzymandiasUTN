@@ -12,7 +12,7 @@ int main()
 
     do{
 
-    system("cls");
+    limpiarPantalla();
         
     cout << "Menu principal" << endl;
     cout << "--------------" << endl;
@@ -40,9 +40,9 @@ int main()
             }
             break;
         default:
-            system("cls");
+            limpiarPantalla();
             cout << "Ingrese opcion valida" << endl;
-            system("pause");
+            pausar();
             break;
 
 

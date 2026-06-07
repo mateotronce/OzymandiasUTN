@@ -45,6 +45,9 @@ struct EstadoDia
 
 
 
+void limpiarPantalla();
+void pausar();
+
 bool salir();
 
 void pedirNombres(Jugador &j1, Jugador &j2);

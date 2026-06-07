@@ -5,3 +5,7 @@ main
 .vscode
 *.tar*
 *.pdf
+*obj
+*bin
+*.o
+juego

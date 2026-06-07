@@ -65,11 +65,11 @@ void menuFinal(Jugador &g, Jugador &w){
         g.cant_allanado = 25000;
         w.cant_allanado = 0;
     }else if(g.cant_allanado < w.cant_allanado){
-        g.cant_dia_plantado = 0;
-        w.cant_dia_plantado = 25000;
+        g.cant_allanado = 0;
+        w.cant_allanado = 25000;
     }else if(g.cant_allanado == w.cant_allanado){
-        g.cant_dia_plantado = 25000;
-        w.cant_dia_plantado = 25000;
+        g.cant_allanado = 25000;
+        w.cant_allanado = 25000;
     }
 
     //Calculo plata final y ganador

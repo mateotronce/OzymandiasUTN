@@ -11,10 +11,10 @@ int lanzarDados(){
 
 
 string simbolo_dado(int valor){
-    string cristal1 = "◊";
-    string cristal2 = "◈";
-    string pollo = "<°)";
-    string dea = "[D]";
+    string cristal1 = "[CRISTAL COMUN]";
+    string cristal2 = "[CRISTAL AZUL]";
+    string pollo = "[POLLO]";
+    string dea = "[DEA]";
 
     switch (valor)
     {
@@ -55,6 +55,7 @@ void modificadorJugador(Jugador &j , EstadoDia &d ,int dado){
             j.kilos_turno += d.kilos_cristal_azul;
             j.litros_turno -= d.litros_cristal_azul;
             j.plata_turno += d.plata_cristal_azul;
+            j.kilos_azul_total += d.kilos_cristal_azul;
         }
         break;
 
@@ -79,6 +80,7 @@ void modificadorJugador(Jugador &j , EstadoDia &d ,int dado){
             j.dea = 0;
             j.plata_turno += 100000;
             j.pollos_hermanos = 0;
+            j.favor_gus_total += 1;
             cout << "Ganaste el favor de gus" << endl;
         }
 

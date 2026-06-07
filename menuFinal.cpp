@@ -7,6 +7,8 @@ using namespace std;
 
 void menuFinal(Jugador &g, Jugador &w){
 
+    system("cls");
+
     float tirada_perfectag = 0, tirada_perfectaw = 0;
 
     //Calculo hito car wash

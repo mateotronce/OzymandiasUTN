@@ -11,6 +11,13 @@ void turno(Jugador &j, EstadoDia &dia)
 
     for (int i = 0; i < 3 ; i++  ) {
         dados[i] = lanzarDados();
+        //99.1 HITO busco la tirada perfecta con el bool
+        if(dados[i] == 4){
+            acu_dado_azul += 1;
+        }
+        if(acu_dado_azul == 3){
+            j.tirada_perfecta = true;
+        }
     }
     
     cout << "Valores de los dados : " ;

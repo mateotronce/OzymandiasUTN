@@ -8,6 +8,7 @@ int main()
 {
     int opcion;
     setlocale(LC_ALL, "Spanish");
+    srand(time(nullptr));
 
     do{
 

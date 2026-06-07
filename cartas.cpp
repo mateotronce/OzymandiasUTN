@@ -6,7 +6,6 @@ using namespace std;
 
 void mod_cartas(EstadoDia &e) {
 
-    srand(time(nullptr));
 
     int carta = lanzarDados();
 

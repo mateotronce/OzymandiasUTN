@@ -55,7 +55,6 @@ void juego() {
 
         // Victoria inmediata: se verifica al terminar el dia completo
         if (w.plata_banco >= 737000 || g.plata_banco >= 737000) {
-            system("cls");
             victoria = true;
             menuFinal(g,w);
         }

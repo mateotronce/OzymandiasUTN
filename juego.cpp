@@ -12,8 +12,8 @@ using namespace std;
 void juego() {
 
 
-    Jugador w = {0, 0, 0, 0, 0};
-    Jugador g = {0, 0, 0, 0, 0};
+    Jugador w = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    Jugador g = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
     pedirNombres(w, g);
 
@@ -55,8 +55,9 @@ void juego() {
 
         // Victoria inmediata: se verifica al terminar el dia completo
         if (w.plata_banco >= 737000 || g.plata_banco >= 737000) {
+            system("cls");
             victoria = true;
-            cout << "\n!Victoria inmediata! Un jugador alcanzo $737.000.\n" << endl;
+            menuFinal(g,w);
         }
 
         if (dia.danger_activo) {
@@ -103,17 +104,7 @@ void juego() {
             cout << "\nPresiona Enter para continuar al dia " << i + 1 << "..." << endl;
             cin.get();
         }else if(i == 6){
-            if(g.plata_banco > w.plata_banco){
-                cout << endl << "El ganador de esta partida fue " << g.nombre << endl << endl;
-            }
-            if(w.plata_banco > g.plata_banco){
-                cout << endl << "El ganador de esta partida fue " << w.nombre << endl << endl;
-            }
-            if(g.plata_banco == w.plata_banco){
-                cout << endl << "Empataron, Gus Fring los considera químicos excepcionales por igual y ambos comparten el control del superlaboratorio. " << endl << endl;
-            }
-
-            system("pause");
+                menuFinal(g,w);
         }
         
     }
@@ -141,6 +132,7 @@ void condicionesJuego(Jugador &j, EstadoDia &dia, bool &continua, bool &primer_p
         cout << "\nFin: La DEA te encontro, perdes todo lo del turno.\n" << endl;
         j.plata_turno = 0;
         j.kilos_turno = 0;
+        j.cant_allanado += 1;
         continua = false;
         }
     }
@@ -159,6 +151,7 @@ void condicionesJuego(Jugador &j, EstadoDia &dia, bool &continua, bool &primer_p
             cout << "\nEntra y Gus ve que lograste la cuota. Se transfiere la plata al banco.\n" << endl;
             j.plata_banco += j.plata_turno;
             j.plata_turno = 0;
+            j.cant_dia_plantado += 1;
             continua = false;
         }
     }
@@ -173,12 +166,17 @@ void condicionesJuego(Jugador &j, EstadoDia &dia, bool &continua, bool &primer_p
             cout << "Finalizas el turno, se suma a tu banco: $" << j.plata_turno << "\n" << endl;
             j.plata_banco += j.plata_turno;
             j.plata_turno = 0;
+            j.cant_dia_plantado +=1;
         }
     }
 
     if (continua) {
         turno(j, dia);
         mostrarEstadisticasSimples(j,dia);
+    }
+    // A1A CAR WASH HITO busco mayor ganancia de dinero en un solo dia
+    if(j.plata_turno > j.plata_turno_max){
+        j.plata_turno_max = j.plata_turno;
     }
     
 }

@@ -14,34 +14,34 @@ void mod_cartas(EstadoDia &e) {
     {
     case 1:
         // La mosca
-        cout << "La carta del dia es: La Mosca" << endl;
+        carta_la_mosca();
         e.kilos_cristal_azul = 1;
         e.plata_cristal_azul = 10000;
         break;
     
     case 2:
         /* MIke */
-        cout << "La carta del dia es: Mike Ehrmantraut" << endl;
+        carta_mike();
         e.dea_limite = 4;
         break;
 
     case 3:
         /* ding */
-        cout << "La carta del dia es: Ding" << endl;
+        carta_ding();
 
         e.kilos_minimos = 8;
         break;
 
     case 4:
         /* Science  */
-        cout << "La carta del dia es: ¡Science, Bitch!" << endl;
+        carta_science();
 
         e.litros_metalamina = 28;
         break;
     
     case 5:
         /* saul */
-        cout << "La carta del dia es: Better Call Saul" << endl;
+        carta_saul();
 
         e.saul_activo = true;
         break;
@@ -49,7 +49,7 @@ void mod_cartas(EstadoDia &e) {
     case 6:
         /* I am the danger */
 
-        cout << "La carta del dia es: " << "I Am The Danger" << endl;
+        carta_danger();
 
         e.danger_activo = true;
         break;

@@ -9,17 +9,11 @@ using namespace std;
 
 
 
-void juego() {
+void juego(Puntaje puntajes[5]) {
 
-    cout << "-----Lista simbolos-----" << endl
-         << "Cristal comun = ◊" << endl
-         << "Cristal azul  = ◈" << endl
-         << "DEA = [D]" << endl
-         << "Pollos Hermanos = <°)" << endl
-         << "------------------------\n" << endl;
 
-    Jugador w = {0, 0, 0, 0, 0};
-    Jugador g = {0, 0, 0, 0, 0};
+    Jugador w = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    Jugador g = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
     pedirNombres(w, g);
 
@@ -30,7 +24,7 @@ void juego() {
     for (int i = 1; i <= 6 && !victoria; i++) {
         EstadoDia dia = {};
         cout.flush();
-        system("clear"); 
+        system("clear");
 
 
         mod_cartas(dia);
@@ -47,8 +41,8 @@ void juego() {
         cout << "\nPresiona Enter para el turno de " << g.nombre << "..." << endl;
         cin.get();
 
-        cout.flush(); 
-        system("clear"); 
+        cout.flush();
+        system("clear");
 
         // Turno jugador 2
         continua = true;
@@ -62,7 +56,7 @@ void juego() {
         // Victoria inmediata: se verifica al terminar el dia completo
         if (w.plata_banco >= 737000 || g.plata_banco >= 737000) {
             victoria = true;
-            cout << "\n!Victoria inmediata! Un jugador alcanzo $737.000.\n" << endl;
+            menuFinal(g,w);
         }
 
         if (dia.danger_activo) {
@@ -97,7 +91,7 @@ void juego() {
         if (!victoria) {
 
             cout << "\n------------------------" << endl;
-            cout << "Estadisticas del turno para el dia " << i << endl; 
+            cout << "Estadisticas del turno para el dia " << i << endl;
             cout << "------------------------" << endl;
 
             mostrar_estadisticas(w,dia);
@@ -108,9 +102,79 @@ void juego() {
         if (!victoria && i < 6) {
             cout << "\nPresiona Enter para continuar al dia " << i + 1 << "..." << endl;
             cin.get();
+        }else if(i == 6){
+                menuFinal(g,w);
         }
-        
     }
+
+    //Busqueda del ganador para agregar al ranking
+    if (w.plata_final_banco > g.plata_final_banco) {
+        // Si el Jugador 1 fue el ganador
+        evaluarYAgregarAlRanking(puntajes, w.nombre, w.plata_final_banco);
+    }
+    else if (g.plata_final_banco > w.plata_final_banco) {
+        // Si el Jugador 2 fue el ganador
+        evaluarYAgregarAlRanking(puntajes, g.nombre, g.plata_final_banco);
+    }
+    else {
+        // En caso de un empate, desempatamos por los kilos de cristal azul
+        if (w.kilos_azul_total > g.kilos_azul_total) {
+            evaluarYAgregarAlRanking(puntajes, w.nombre, w.plata_final_banco);
+        }
+        else if (g.kilos_azul_total > w.kilos_azul_total) {
+            evaluarYAgregarAlRanking(puntajes, g.nombre, g.plata_final_banco);
+        }
+    }
+}
+
+
+
+void evaluarYAgregarAlRanking(Puntaje ranking[5], string nombreJugador, float dineroJugador) {
+    // Evaluar si el puntaje del ultimo ganador es mas grande que el del ultimo del top 5
+    if (dineroJugador > ranking[4].dineroFinal)
+        {
+
+        // Si el puntaje es mas grande piso el valor que tenia antes
+        ranking[4].nombre = nombreJugador;
+        ranking[4].dineroFinal = dineroJugador;
+
+        // Metodo de burbuja para ordenar de mayor a menor
+        for (int j = 0; j < 5; j++)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    if (ranking[i].dineroFinal < ranking[i + 1].dineroFinal)
+                    {
+                        Puntaje aux = ranking[i + 1];
+                        ranking[i + 1] = ranking[i];
+                        ranking[i] = aux;
+                    }
+                }
+            }
+        }
+}
+
+void estadisticas(const Puntaje puntajes[5]) {
+    system("cls");
+    cout << "=========================================" << endl;
+    cout << " ESTADISTICAS                            " << endl;
+    cout << "=========================================" << endl;
+    cout << " NOMBRE            | DINERO              " << endl;
+    cout << "-----------------------------------------" << endl;
+
+    for (int i = 0; i < 5; i++){
+        cout << "- " << puntajes[i].nombre << "               ";
+
+        // Si no tiene dinero el puesto esta libre
+        if (puntajes[i].dineroFinal == 0){
+            cout << "---" << endl;
+        }
+        else{
+            cout << "$" << puntajes[i].dineroFinal << endl;
+        }
+    }
+    cout << "=========================================" << endl;
+    system("pause");
 }
 
 void condicionesJuego(Jugador &j, EstadoDia &dia, bool &continua, bool &primer_pasada, int num_dia) {
@@ -135,6 +199,7 @@ void condicionesJuego(Jugador &j, EstadoDia &dia, bool &continua, bool &primer_p
         cout << "\nFin: La DEA te encontro, perdes todo lo del turno.\n" << endl;
         j.plata_turno = 0;
         j.kilos_turno = 0;
+        j.cant_allanado += 1;
         continua = false;
         }
     }
@@ -143,7 +208,7 @@ void condicionesJuego(Jugador &j, EstadoDia &dia, bool &continua, bool &primer_p
         cin.get();
     }
     else if (j.litros_turno < 3) {
-        cout << "\nTe quedaste sin material, el laboratorio se apaga y escuchas pasos desde lejos. presiona enter para conrinuar" << endl; 
+        cout << "\nTe quedaste sin material, el laboratorio se apaga y escuchas pasos desde lejos. presiona enter para conrinuar" << endl;
         cin.get();
         if (j.kilos_turno < dia.kilos_minimos) {
             cout << "\nEntra Gus y ve que no lograste la cuota. Perdes todo lo de hoy.\n" << endl;
@@ -153,6 +218,7 @@ void condicionesJuego(Jugador &j, EstadoDia &dia, bool &continua, bool &primer_p
             cout << "\nEntra y Gus ve que lograste la cuota. Se transfiere la plata al banco.\n" << endl;
             j.plata_banco += j.plata_turno;
             j.plata_turno = 0;
+            j.cant_dia_plantado += 1;
             continua = false;
         }
     }
@@ -167,6 +233,7 @@ void condicionesJuego(Jugador &j, EstadoDia &dia, bool &continua, bool &primer_p
             cout << "Finalizas el turno, se suma a tu banco: $" << j.plata_turno << "\n" << endl;
             j.plata_banco += j.plata_turno;
             j.plata_turno = 0;
+            j.cant_dia_plantado +=1;
         }
     }
 
@@ -174,7 +241,11 @@ void condicionesJuego(Jugador &j, EstadoDia &dia, bool &continua, bool &primer_p
         turno(j, dia);
         mostrarEstadisticasSimples(j,dia);
     }
-    
+    // A1A CAR WASH HITO busco mayor ganancia de dinero en un solo dia
+    if(j.plata_turno > j.plata_turno_max){
+        j.plata_turno_max = j.plata_turno;
+    }
+
 }
 
 

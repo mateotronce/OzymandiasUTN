@@ -1,18 +1,25 @@
 #ifndef FUNCIONES_H_INCLUDED
 #define FUNCIONES_H_INCLUDED
-#include <string>  
+#include <string>
 
-using namespace std; 
+using namespace std;
 
 
 struct Jugador
 {
     float litros_turno;
     float plata_turno;
+    float plata_turno_max;
     float plata_banco;
+    float plata_final_banco;
+    int favor_gus_total;
+    int cant_dia_plantado;
+    int cant_allanado;
     int dea;
     int kilos_turno;
     int pollos_hermanos;
+    int kilos_azul_total;
+    bool tirada_perfecta = false;
     string nombre;
 };
 
@@ -36,7 +43,10 @@ struct EstadoDia
     bool danger_activo = false;
 };
 
-
+struct Puntaje{
+    string nombre;
+    float dineroFinal;
+};
 
 bool salir();
 
@@ -59,10 +69,22 @@ void mostrarEstadisticasSimples (Jugador &w , EstadoDia &d);
 
 void modificadorJugador(Jugador &j , EstadoDia &d ,int dado);
 
-void juego();
+void juego(Puntaje puntajes[5]);
 
 void condicionesJuego(Jugador &j, EstadoDia &dia, bool &continua, bool &primer_pasada, int num_dia);
 
 void mod_cartas(EstadoDia &e);
+
+void carta_la_mosca();
+void carta_mike();
+void carta_ding();
+void carta_science();
+void carta_saul();
+void carta_danger();
+
+void menuFinal(Jugador &g, Jugador &w);
+
+void evaluarYAgregarAlRanking(Puntaje puntajes[5], string nombreGanador, float dineroGanador);
+void estadisticas(const Puntaje Puntajes[5]);
 
 #endif // FUNCIONES_H_INCLUDED

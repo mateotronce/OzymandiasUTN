@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void menuFinal(Jugador &g, Jugador &w){
+void menuFinal(Jugador &g, Jugador &w, Puntaje puntajes[5]){
 
     limpiarPantalla();
 
@@ -18,9 +18,12 @@ void menuFinal(Jugador &g, Jugador &w){
     }else if(g.plata_turno_max < w.plata_turno_max){
         g.plata_turno_max = 0;
         w.plata_turno_max = 50000;
-    }else if(g.plata_turno_max == w.plata_turno_max){
+    }else if(g.plata_turno_max > 0){
         g.plata_turno_max = 50000;
         w.plata_turno_max = 50000;
+    }else{
+        g.plata_turno_max = 0;
+        w.plata_turno_max = 0;
     }
 
     //Calculo hito favor de gus
@@ -45,9 +48,12 @@ void menuFinal(Jugador &g, Jugador &w){
     }else if(g.cant_dia_plantado < w.cant_dia_plantado){
         g.cant_dia_plantado = 0;
         w.cant_dia_plantado = 30000;
-    }else if(g.cant_dia_plantado == w.cant_dia_plantado){
+    }else if(g.cant_dia_plantado > 0){
         g.cant_dia_plantado = 30000;
         w.cant_dia_plantado = 30000;
+    }else{
+        g.cant_dia_plantado = 0;
+        w.cant_dia_plantado = 0;
     }
 
 
@@ -110,6 +116,9 @@ void menuFinal(Jugador &g, Jugador &w){
     cout << "-----------------------------------------------------------------" << endl;
     cout << "TOTAL                 $" << g.plata_final_banco << "        $"     << w.plata_final_banco << endl << endl;
     cout << "GANADOR: "               << ganador             << endl            << endl;
+
+    evaluarYAgregarAlRanking(puntajes, g.nombre, g.plata_final_banco);
+    evaluarYAgregarAlRanking(puntajes, w.nombre, w.plata_final_banco);
 
     pausar();
 

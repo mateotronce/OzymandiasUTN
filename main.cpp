@@ -6,14 +6,25 @@ using namespace std;
 
 int main()
 {
+    srand(time(0)) ;
+    //Inicializacion del vector de puntajes
+    // Puntaje puntajes[5] = {
+    //     {"", 0}, {"", 0}, {"", 0}, {"", 0}, {"", 0}
+    // };
+    //Vector de prueba para probar ordenamiento
+    Puntaje puntajes[5] = {
+        {"Walter", 800000}, {"Jesse", 750000}, {"Tuco", 50000}, {"Saul", 450000}, {"Kim", 50000}
+    };
+
+
     int opcion;
     setlocale(LC_ALL, "Spanish");
-    srand(time(nullptr));
 
     do{
 
+
     limpiarPantalla();
-        
+
     cout << "Menu principal" << endl;
     cout << "--------------" << endl;
     cout << "1 - Jugar" << endl;
@@ -27,10 +38,10 @@ int main()
 
     switch(opcion){
         case 1:
-            juego();
+            juego(puntajes);
             break;
         case 2:
-            //Estadisticas();
+            estadisticas(puntajes);
             break;
         case 3:
             creditos();
@@ -53,6 +64,6 @@ int main()
     }while(opcion != 0);
 
 
-    
+
     return 0;
 }

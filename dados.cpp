@@ -67,21 +67,24 @@ void modificadorJugador(Jugador &j , EstadoDia &d ,int dado){
         
     case 6:
 
-        if (j.litros_turno - d.litros_cristal_blanco < 0){
-            cout << "No pudiste ganarte el favor de gus.Te quedas sin litros" << endl;
-            j.litros_turno = 0;
-        }
-        else {
-            j.litros_turno -= 2;        
-            j.pollos_hermanos += 1;
-        }
-
-        if (j.pollos_hermanos == 3) {
-            j.dea = 0;
-            j.plata_turno += 100000;
-            j.pollos_hermanos = 0;
-            j.favor_gus_total += 1;
-            cout << "Ganaste el favor de gus" << endl;
+        if (j.litros_turno < 2) {
+            cout << "\nNo tenes litros suficientes para guardar el favor de Gus." << endl;
+        } else {
+            char guardar;
+            cout << "\n¿Guardar sello de Pollos Hermanos? (cuesta 2L) (S/N): ";
+            cin >> guardar;
+            cin.ignore(1000, '\n');
+            if (guardar == 'S' || guardar == 's') {
+                j.litros_turno -= 2;
+                j.pollos_hermanos += 1;
+                if (j.pollos_hermanos == 3) {
+                    j.dea = 0;
+                    j.plata_turno += 100000;
+                    j.pollos_hermanos = 0;
+                    j.favor_gus_total += 1;
+                    cout << "Ganaste el favor de Gus! +$100.000 y DEA reseteada." << endl;
+                }
+            }
         }
 
         break;

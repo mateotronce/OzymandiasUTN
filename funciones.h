@@ -44,6 +44,10 @@ struct EstadoDia
 };
 
 
+struct Puntaje{
+    string nombre;
+    float dineroFinal;
+};
 
 void limpiarPantalla();
 void pausar();
@@ -69,7 +73,7 @@ void mostrarEstadisticasSimples (Jugador &w , EstadoDia &d);
 
 void modificadorJugador(Jugador &j , EstadoDia &d ,int dado);
 
-void juego();
+void juego(Puntaje puntajes[5]);
 
 void condicionesJuego(Jugador &j, EstadoDia &dia, bool &continua, bool &primer_pasada, int num_dia);
 
@@ -82,6 +86,9 @@ void carta_science();
 void carta_saul();
 void carta_danger();
 
-void menuFinal(Jugador &g, Jugador &w);
+void menuFinal(Jugador &g, Jugador &w, Puntaje puntajes[5]);
+
+void evaluarYAgregarAlRanking(Puntaje puntajes[5], string nombreGanador, float dineroGanador);
+void estadisticas(const Puntaje Puntajes[5]);
 
 #endif // FUNCIONES_H_INCLUDED

@@ -46,7 +46,7 @@ string msgAleatorio(const string msgs[], int n) {
 
 
 
-void juego() {
+void juego(Puntaje puntajes[5]) {
 
     Jugador w = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     Jugador g = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -69,9 +69,11 @@ void juego() {
         primer_pasada = true;
         reset_turno(w, dia);
         mostrarEstadisticasSimples(w, dia);
+        float w_banco_antes = w.plata_banco;
         while (continua) {
             condicionesJuego(w, dia, continua, primer_pasada, i);
         }
+        float w_ganado_dia = w.plata_banco - w_banco_antes;
 
         cout << "\n--- Turno de " << g.nombre << " ---" << endl;
         cout << "Presiona Enter cuando estes listo" << endl;
@@ -85,21 +87,23 @@ void juego() {
         primer_pasada = true;
         reset_turno(g, dia);
         mostrarEstadisticasSimples(g, dia);
+        float g_banco_antes = g.plata_banco;
         while (continua) {
             condicionesJuego(g, dia, continua, primer_pasada, i);
         }
+        float g_ganado_dia = g.plata_banco - g_banco_antes;
 
         // Victoria inmediata: se verifica al terminar el dia completo
         if (w.plata_banco >= 737000 || g.plata_banco >= 737000) {
             victoria = true;
-            menuFinal(g, w);
+            menuFinal(g, w, puntajes);
         }
 
         if (dia.danger_activo) {
             separadorTematico("GUS");
             cout << "Hoy el que menos cocino tiene que afrontar consecuencias. 50k o todo lo del banco.\n" << endl;
 
-            if (w.plata_turno > g.plata_turno) {
+            if (w_ganado_dia > g_ganado_dia) {
                 cout << g.nombre << " quedo expuesto. Gus no tolera al eslabon debil." << endl;
                 if (g.plata_banco > 50000) {
                     g.plata_banco -= 50000;
@@ -108,15 +112,17 @@ void juego() {
                     w.plata_banco += g.plata_banco;
                     g.plata_banco = 0;
                 }
-            } else {
+            } else if (g_ganado_dia > w_ganado_dia) {
                 cout << w.nombre << " quedo expuesto. Gus no tolera al eslabon debil." << endl;
                 if (w.plata_banco > 50000) {
                     w.plata_banco -= 50000;
                     g.plata_banco += 50000;
                 } else {
-                    g.plata_banco += g.plata_banco;
+                    g.plata_banco += w.plata_banco;
                     w.plata_banco = 0;
                 }
+            } else {
+                cout << "Ambos cocinaron igual. Gus acepta el empate." << endl;
             }
         }
 
@@ -135,7 +141,7 @@ void juego() {
             cout << "Presiona Enter para continuar al dia " << i + 1 << "..." << endl;
             cin.get();
         } else if (i == 6) {
-            menuFinal(g, w);
+            menuFinal(g, w, puntajes);
         }
     }
 }
@@ -291,4 +297,54 @@ void pedirNombres(Jugador &j1, Jugador &j2) {
         cin >> confirmacion;
         cin.ignore();
     } while (confirmacion != 'S' && confirmacion != 's');
+}
+
+
+
+void evaluarYAgregarAlRanking(Puntaje ranking[5], string nombreJugador, float dineroJugador) {
+    // Evaluar si el puntaje del ultimo ganador es mas grande que el del ultimo del top 5
+    if (dineroJugador > ranking[4].dineroFinal)
+        {
+
+        // Si el puntaje es mas grande piso el valor que tenia antes
+        ranking[4].nombre = nombreJugador;
+        ranking[4].dineroFinal = dineroJugador;
+
+        // Metodo de burbuja para ordenar de mayor a menor
+        for (int j = 0; j < 5; j++)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    if (ranking[i].dineroFinal < ranking[i + 1].dineroFinal)
+                    {
+                        Puntaje aux = ranking[i + 1];
+                        ranking[i + 1] = ranking[i];
+                        ranking[i] = aux;
+                    }
+                }
+            }
+        }
+}
+
+void estadisticas(const Puntaje puntajes[5]) {
+    limpiarPantalla();
+    cout << "=========================================" << endl;
+    cout << " ESTADISTICAS                            " << endl;
+    cout << "=========================================" << endl;
+    cout << " NOMBRE            | DINERO              " << endl;
+    cout << "-----------------------------------------" << endl;
+
+    for (int i = 0; i < 5; i++){
+        cout << "- " << puntajes[i].nombre << "               ";
+
+        // Si no tiene dinero el puesto esta libre
+        if (puntajes[i].dineroFinal == 0){
+            cout << "---" << endl;
+        }
+        else{
+            cout << "$" << puntajes[i].dineroFinal << endl;
+        }
+    }
+    cout << "=========================================" << endl;
+    pausar();
 }

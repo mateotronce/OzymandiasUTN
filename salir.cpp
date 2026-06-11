@@ -12,7 +12,7 @@ bool salir(){
     cin >> confirmacion;
 
     if(confirmacion == 'S' || confirmacion == 's'){
-        cout << endl << "Gracias por jugar ozymandias!";
+        cout << endl << "Gracias por jugar ozymandias!" << endl;
         return true;
     }else{
         return false;

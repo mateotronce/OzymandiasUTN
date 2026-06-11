@@ -10,7 +10,7 @@ void carta_la_mosca(){
 
     cout << "La carta del dia es: La Mosca" << endl << endl;
     cout << "Efecto: El proceso se vuelve ineficiente y torpe. Cada cara de Cristal Azul obtenida durante este dia sufre una penalizacion:"  << endl;
-    cout << "su pureza se degrada por completo, otorgando solo 1 Kilo y $10.000 en la Cuenta Temporal (rindiendo exactamente igual que un Cristal Comun),"  << endl;
+    cout << "su pureza se degrada por completo, otorgando solo 1 Kilo y $15.000 en la Cuenta Temporal (rindiendo exactamente igual que un Cristal Comun),"  << endl;
     cout << "pero su costo de Metilamina se mantiene en 5 Litros." << endl << endl;
 
 }

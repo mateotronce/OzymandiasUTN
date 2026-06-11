@@ -227,6 +227,7 @@ void condicionesJuego(Jugador &j, EstadoDia &dia, bool &continua, bool &primer_p
                 "Gus recorre el lab con la mirada. 'La cuota se cumplio.'\nLos numeros aparecen en tu banco."
             };
             cout << "\n" << msgAleatorio(gus_ok, 3) << "\n" << endl;
+            if (j.plata_turno > j.plata_turno_max) j.plata_turno_max = j.plata_turno;
             j.plata_banco += j.plata_turno;
             j.plata_turno = 0;
             j.cant_dia_plantado += 1;
@@ -242,6 +243,7 @@ void condicionesJuego(Jugador &j, EstadoDia &dia, bool &continua, bool &primer_p
         if (valor == 2) {
             continua = false;
             cout << "Guardas el delantal. Se acreditan $" << j.plata_turno << " a tu banco.\n" << endl;
+            if (j.plata_turno > j.plata_turno_max) j.plata_turno_max = j.plata_turno;
             j.plata_banco += j.plata_turno;
             j.plata_turno = 0;
             j.cant_dia_plantado += 1;
@@ -251,10 +253,6 @@ void condicionesJuego(Jugador &j, EstadoDia &dia, bool &continua, bool &primer_p
     if (continua) {
         turno(j, dia);
         mostrarEstadisticasSimples(j, dia);
-    }
-    // A1A CAR WASH HITO busco mayor ganancia de dinero en un solo dia
-    if (j.plata_turno > j.plata_turno_max) {
-        j.plata_turno_max = j.plata_turno;
     }
 }
 

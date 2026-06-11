@@ -8,13 +8,13 @@ int main()
 {
     srand(time(0)) ;
     //Inicializacion del vector de puntajes
-    // Puntaje puntajes[5] = {
-    //     {"", 0}, {"", 0}, {"", 0}, {"", 0}, {"", 0}
-    // };
-    //Vector de prueba para probar ordenamiento
     Puntaje puntajes[5] = {
-        {"Walter", 800000}, {"Jesse", 750000}, {"Tuco", 50000}, {"Saul", 450000}, {"Kim", 50000}
+        {"", 0}, {"", 0}, {"", 0}, {"", 0}, {"", 0}
     };
+    //Vector de prueba para probar ordenamiento
+    // Puntaje puntajes[5] = {
+    //     {"Walter", 800000}, {"Jesse", 750000}, {"Tuco", 50000}, {"Saul", 450000}, {"Kim", 50000}
+    // };
 
 
     int opcion;

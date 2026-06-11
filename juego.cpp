@@ -17,12 +17,8 @@ void limpiarPantalla() {
 }
 
 void pausar() {
-    #ifdef _WIN32
-        system("pause");
-    #else
-        cout << "Presione Enter para continuar...";
-        cin.ignore(1000, '\n');
-    #endif
+    cout << "Presione Enter para continuar...";
+    cin.get();
 }
 
 void animarPuntos(int cantidad, int delay_ms) {

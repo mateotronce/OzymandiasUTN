@@ -23,6 +23,7 @@ int main()
     cout << "0 - Salir" << endl;
     cout <<"Ingrese una opcion: ";
     cin >> opcion;
+    cin.ignore(1000, '\n');
 
     switch(opcion){
         case 1:

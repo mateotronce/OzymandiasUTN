@@ -7,7 +7,7 @@ using namespace std;
 
 void menuFinal(Jugador &g, Jugador &w){
 
-    system("cls");
+    limpiarPantalla();
 
     float tirada_perfectag = 0, tirada_perfectaw = 0;
 
@@ -42,10 +42,10 @@ void menuFinal(Jugador &g, Jugador &w){
     if(g.cant_dia_plantado > w.cant_dia_plantado){
         g.cant_dia_plantado = 30000;
         w.cant_dia_plantado = 0;
-    }else if(g.favor_gus_total < w.favor_gus_total){
+    }else if(g.cant_dia_plantado < w.cant_dia_plantado){
         g.cant_dia_plantado = 0;
         w.cant_dia_plantado = 30000;
-    }else if(g.favor_gus_total == w.favor_gus_total){
+    }else if(g.cant_dia_plantado == w.cant_dia_plantado){
         g.cant_dia_plantado = 30000;
         w.cant_dia_plantado = 30000;
     }
@@ -111,7 +111,7 @@ void menuFinal(Jugador &g, Jugador &w){
     cout << "TOTAL                 $" << g.plata_final_banco << "        $"     << w.plata_final_banco << endl << endl;
     cout << "GANADOR: "               << ganador             << endl            << endl;
 
-    system("pause");
+    pausar();
 
 
 }

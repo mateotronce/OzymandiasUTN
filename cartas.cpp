@@ -6,7 +6,6 @@ using namespace std;
 
 void mod_cartas(EstadoDia &e) {
 
-    srand(time(nullptr));
 
     int carta = lanzarDados();
 
@@ -16,7 +15,7 @@ void mod_cartas(EstadoDia &e) {
         // La mosca
         carta_la_mosca();
         e.kilos_cristal_azul = 1;
-        e.plata_cristal_azul = 10000;
+        e.plata_cristal_azul = 15000;
         break;
     
     case 2:

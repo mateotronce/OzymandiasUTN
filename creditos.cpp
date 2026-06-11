@@ -4,7 +4,7 @@ using namespace std;
 
 void creditos(){
 
-    system("cls");
+    limpiarPantalla();
 
     cout << "Equipo 5" << endl;
     cout << "------------------------------------------------------" << endl;
@@ -14,6 +14,6 @@ void creditos(){
     cout << "34607         Mateo Pablo            Troncelliti" << endl;
     cout << "------------------------------------------------------" << endl;
 
-    system("pause");
+    pausar();
 
 }

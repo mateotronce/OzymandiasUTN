@@ -8,7 +8,6 @@ void turno(Jugador &j, EstadoDia &dia)
     int dados[3] = {};
     int acu_dado_azul = 0;
 
-    srand(time(nullptr));
 
     for (int i = 0; i < 3 ; i++  ) {
         dados[i] = lanzarDados();

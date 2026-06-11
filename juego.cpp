@@ -17,17 +17,14 @@ void limpiarPantalla() {
 }
 
 void pausar() {
-    cout << "Presione Enter para continuar...";
-    cin.get();
+    #ifdef _WIN32
+        system("pause");
+    #else
+        cout << "Presione Enter para continuar...";
+        cin.ignore(1000, '\n');
+    #endif
 }
 
-void animarPuntos(int cantidad, int delay_ms) {
-    for (int i = 0; i < cantidad; i++) {
-        cout << "." << flush;
-        usleep(delay_ms * 1000);
-    }
-    cout << "\n";
-}
 
 void separadorTematico(const string& tipo) {
     if (tipo == "DEA") {
@@ -151,7 +148,6 @@ void condicionesJuego(Jugador &j, EstadoDia &dia, bool &continua, bool &primer_p
         cout << "\n --------------------------------------- \n" << endl;
 
         cout << "Presiona Enter para tirar los dados";
-        animarPuntos(3, 400);
         cin.get();
         primer_pasada = false;
     }
@@ -164,7 +160,6 @@ void condicionesJuego(Jugador &j, EstadoDia &dia, bool &continua, bool &primer_p
             "Escuchas el radio de un agente federal. Estan muy cerca"
         };
         cout << msgAleatorio(sirenas, 3);
-        animarPuntos(4, 600);
 
         if (dia.saul_activo) {
             separadorTematico("SAUL");
@@ -196,7 +191,6 @@ void condicionesJuego(Jugador &j, EstadoDia &dia, bool &continua, bool &primer_p
     else if (j.kilos_turno < dia.kilos_minimos && j.litros_turno >= 3) {
         cout << "\nLa cuota minima todavia no esta cubierta. Seguis cocinando." << endl;
         cout << "Presiona Enter para tirar los dados";
-        animarPuntos(3, 300);
         cin.get();
     }
     else if (j.litros_turno < 3) {
@@ -208,7 +202,6 @@ void condicionesJuego(Jugador &j, EstadoDia &dia, bool &continua, bool &primer_p
             "La ultima gota cae. El extractor se detiene.\nEl lab queda en un silencio que pesa"
         };
         cout << msgAleatorio(lab_msgs, 3);
-        animarPuntos(4, 700);
         cin.get();
 
         separadorTematico("GUS");

@@ -48,6 +48,8 @@ string msgAleatorio(const string msgs[], int n) {
 
 void juego(Puntaje puntajes[5]) {
 
+    limpiarPantalla();
+
     Jugador w = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     Jugador g = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 

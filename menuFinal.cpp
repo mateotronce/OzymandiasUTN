@@ -80,7 +80,7 @@ void menuFinal(Jugador &g, Jugador &w, Puntaje puntajes[5]){
         g.cant_allanado = 0;
         w.cant_allanado = 0;
     }
-        
+
 
     //Calculo plata final y ganador
     g.plata_final_banco = g.plata_banco + g.plata_turno_max + g.favor_gus_total + g.cant_dia_plantado + tirada_perfectag + g.cant_allanado;
@@ -117,8 +117,24 @@ void menuFinal(Jugador &g, Jugador &w, Puntaje puntajes[5]){
     cout << "TOTAL                 $" << g.plata_final_banco << "        $"     << w.plata_final_banco << endl << endl;
     cout << "GANADOR: "               << ganador             << endl            << endl;
 
-    evaluarYAgregarAlRanking(puntajes, g.nombre, g.plata_final_banco);
-    evaluarYAgregarAlRanking(puntajes, w.nombre, w.plata_final_banco);
+    //Busqueda del ganador para agregar al ranking
+    if (w.plata_final_banco > g.plata_final_banco) {
+        // Si el Jugador 1 fue el ganador
+        evaluarYAgregarAlRanking(puntajes, w.nombre, w.plata_final_banco);
+    }
+    else if (g.plata_final_banco > w.plata_final_banco) {
+        // Si el Jugador 2 fue el ganador
+        evaluarYAgregarAlRanking(puntajes, g.nombre, g.plata_final_banco);
+    }
+    else {
+        // En caso de un empate, desempatamos por los kilos de cristal azul
+        if (w.kilos_azul_total > g.kilos_azul_total) {
+            evaluarYAgregarAlRanking(puntajes, w.nombre, w.plata_final_banco);
+        }
+        else if (g.kilos_azul_total > w.kilos_azul_total) {
+            evaluarYAgregarAlRanking(puntajes, g.nombre, g.plata_final_banco);
+        }
+    }
 
     pausar();
 

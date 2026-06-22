@@ -5,17 +5,17 @@ using namespace std;
 
 bool salir(){
 
-    limpiarPantalla();
+    system("cls");
     char confirmacion;
 
     cout << "Seguro que desea salir? S/N ";
     cin >> confirmacion;
 
     if(confirmacion == 'S' || confirmacion == 's'){
-        cout << endl << "Gracias por jugar ozymandias!" << endl;
+        cout << endl << "Gracias por jugar OZYMANDIAS!" << endl;
         return true;
-    }else{
+    }
+    else{
         return false;
     }
-
 }

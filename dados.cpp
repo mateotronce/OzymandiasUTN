@@ -90,7 +90,7 @@ void modificadorJugador(Jugador &j, EstadoDia &d, int dado)
                     j.plata_turno += 100000;
                     j.pollos_hermanos = 0;
                     j.favor_gus_total += 1;
-                    cout << "Ganaste el favor de Gus! +$100.000 y DEA reseteada." << endl;
+                    cout << "Ganaste el favor de Gus! +$100.000 y DEA reseteada." << endl << endl;
                 }
             }
         }

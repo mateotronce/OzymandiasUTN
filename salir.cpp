@@ -5,7 +5,7 @@ using namespace std;
 
 bool salir(){
 
-    system("cls");
+    limpiarPantalla();
     char confirmacion;
 
     cout << "Seguro que desea salir? S/N ";

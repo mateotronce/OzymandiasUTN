@@ -5,138 +5,159 @@
 
 using namespace std;
 
-void menuFinal(Jugador &g, Jugador &w, Puntaje puntajes[5]){
+void menuFinal(Jugador &j2, Jugador &j1, Puntaje puntajes[5]){
 
     limpiarPantalla();
 
-    float tirada_perfectag = 0, tirada_perfectaw = 0;
+    float tirada_perfectaj2 = 0, tirada_perfectaj1 = 0;
 
     //Calculo hito car wash
-    if(g.plata_turno_max > w.plata_turno_max){
-        g.plata_turno_max = 50000;
-        w.plata_turno_max = 0;
-    }else if(g.plata_turno_max < w.plata_turno_max){
-        g.plata_turno_max = 0;
-        w.plata_turno_max = 50000;
-    }else if(g.plata_turno_max > 0){
-        g.plata_turno_max = 50000;
-        w.plata_turno_max = 50000;
-    }else{
-        g.plata_turno_max = 0;
-        w.plata_turno_max = 0;
+    if(j2.plata_turno_max > j1.plata_turno_max)
+    {
+        j2.plata_turno_max = 50000;
+        j1.plata_turno_max = 0;
+    }
+    else if(j2.plata_turno_max < j1.plata_turno_max)
+    {
+        j2.plata_turno_max = 0;
+        j1.plata_turno_max = 50000;
+    }
+    else if(j2.plata_turno_max > 0)
+    {
+        j2.plata_turno_max = 50000;
+        j1.plata_turno_max = 50000;
+    }
+    else
+    {
+        j2.plata_turno_max = 0;
+        j1.plata_turno_max = 0;
     }
 
     //Calculo hito favor de gus
-    if(g.favor_gus_total > w.favor_gus_total){
-        g.favor_gus_total = 50000;
-        w.favor_gus_total = 0;
-    }else if(g.favor_gus_total < w.favor_gus_total){
-        g.favor_gus_total = 0;
-        w.favor_gus_total = 50000;
-    }else if(g.favor_gus_total == w.favor_gus_total && (g.favor_gus_total != 0 || w.favor_gus_total != 0)){
-        g.favor_gus_total = 50000;
-        w.favor_gus_total = 50000;
-    }else{
-        g.favor_gus_total = 0;
-        w.favor_gus_total = 0;
+    if(j2.favor_gus_total > j1.favor_gus_total)
+    {
+        j2.favor_gus_total = 50000;
+        j1.favor_gus_total = 0;
+    }
+    else if(j2.favor_gus_total < j1.favor_gus_total)
+    {
+        j2.favor_gus_total = 0;
+        j1.favor_gus_total = 50000;
+    }
+    else if(j2.favor_gus_total == j1.favor_gus_total && (j2.favor_gus_total != 0 || j1.favor_gus_total != 0))
+    {
+        j2.favor_gus_total = 50000;
+        j1.favor_gus_total = 50000;
+    }
+    else
+    {
+        j2.favor_gus_total = 0;
+        j1.favor_gus_total = 0;
     }
 
-    //Calculo hito plantarse
-    if(g.cant_dia_plantado > w.cant_dia_plantado){
-        g.cant_dia_plantado = 30000;
-        w.cant_dia_plantado = 0;
-    }else if(g.cant_dia_plantado < w.cant_dia_plantado){
-        g.cant_dia_plantado = 0;
-        w.cant_dia_plantado = 30000;
-    }else if(g.cant_dia_plantado > 0){
-        g.cant_dia_plantado = 30000;
-        w.cant_dia_plantado = 30000;
-    }else{
-        g.cant_dia_plantado = 0;
-        w.cant_dia_plantado = 0;
+    //Calculo hito plantarse Say my name
+    if(j2.cant_dia_plantado > j1.cant_dia_plantado)
+    {
+        j2.cant_dia_plantado = 30000;
+        j1.cant_dia_plantado = 0;
     }
-
+    else if(j2.cant_dia_plantado < j1.cant_dia_plantado)
+    {
+        j2.cant_dia_plantado = 0;
+        j1.cant_dia_plantado = 30000;
+    }
+    else if(j2.cant_dia_plantado > 0)
+    {
+        j2.cant_dia_plantado = 30000;
+        j1.cant_dia_plantado = 30000;
+    }
+    else
+    {
+        j2.cant_dia_plantado = 0;
+        j1.cant_dia_plantado = 0;
+    }
 
 
     //Calculo hito tirada perfecta
-    if(g.tirada_perfecta){
-        tirada_perfectag = 50000;
+    if(j2.tirada_perfecta){
+        tirada_perfectaj2 = 50000;
     }
-    if(w.tirada_perfecta){
-        tirada_perfectaw = 50000;
+    if(j1.tirada_perfecta){
+        tirada_perfectaj1 = 50000;
     }
 
-    //Calculo hito all good man
-    if(g.cant_allanado > w.cant_allanado){
-        g.cant_allanado = 25000;
-        w.cant_allanado = 0;
-    }else if(g.cant_allanado < w.cant_allanado){
-        g.cant_allanado = 0;
-        w.cant_allanado = 25000;
-    }else if(g.cant_allanado == w.cant_allanado && (g.cant_allanado != 0 || w.cant_allanado != 0)){
-        g.cant_allanado = 25000;
-        w.cant_allanado = 25000;
-    }else{
-        g.cant_allanado = 0;
-        w.cant_allanado = 0;
+    //Calculo hito it's all good man
+    if(j2.cant_allanado > j1.cant_allanado)
+    {
+        j2.cant_allanado = 25000;
+        j1.cant_allanado = 0;
+    }
+    else if(j2.cant_allanado < j1.cant_allanado)
+    {
+        j2.cant_allanado = 0;
+        j1.cant_allanado = 25000;
+    }
+    else if(j2.cant_allanado == j1.cant_allanado && (j2.cant_allanado != 0 || j1.cant_allanado != 0))
+    {
+        j2.cant_allanado = 25000;
+        j1.cant_allanado = 25000;
+    }
+    else
+    {
+        j2.cant_allanado = 0;
+        j1.cant_allanado = 0;
     }
 
 
     //Calculo plata final y ganador
-    g.plata_final_banco = g.plata_banco + g.plata_turno_max + g.favor_gus_total + g.cant_dia_plantado + tirada_perfectag + g.cant_allanado;
-    w.plata_final_banco = w.plata_banco + w.plata_turno_max + w.favor_gus_total + w.cant_dia_plantado + tirada_perfectaw + w.cant_allanado;
+    j2.plata_final_banco = j2.plata_banco + j2.plata_turno_max + j2.favor_gus_total + j2.cant_dia_plantado + tirada_perfectaj2 + j2.cant_allanado;
+    j1.plata_final_banco = j1.plata_banco + j1.plata_turno_max + j1.favor_gus_total + j1.cant_dia_plantado + tirada_perfectaj1 + j1.cant_allanado;
 
     string ganador;
-    if(g.plata_final_banco > w.plata_final_banco){
-        ganador = g.nombre;
-    }else if(g.plata_final_banco < w.plata_final_banco){
-        ganador = w.nombre;
-    }else if(g.plata_final_banco == w.plata_final_banco){
-        if(w.kilos_azul_total > g.kilos_azul_total){
-            ganador = w.nombre;
-        }else if(w.kilos_azul_total < g.kilos_azul_total){
-            ganador = g.nombre;
-        }else{
-            ganador = "Empataron, Gus Fring los considera químicos excepcionales por igual y ambos comparten el control del superlaboratorio. ";
-        }
-    }
-
-
-
-    //Display de menu final
-
-    cout << "HITO                  " << g.nombre             << "             " << w.nombre << endl;
-    cout << "-----------------------------------------------------------------" << endl;
-    cout << "Dinero                $" << g.plata_banco       << "        $"     << w.plata_banco << endl;
-    cout << "A1A Car Wash          $" << g.plata_turno_max   << "        $"     << w.plata_turno_max << endl;
-    cout << "Negocio del imperio   $" << g.favor_gus_total   << "        $"     << w.favor_gus_total << endl;
-    cout << "Say My Name           $" << g.cant_dia_plantado << "        $"     << w.cant_dia_plantado << endl;
-    cout << "99.1%                 $" << tirada_perfectag    << "        $"     << tirada_perfectaw << endl;
-    cout << "It´s All Good Man     $" << g.cant_allanado     << "        $"     << w.cant_allanado << endl;
-    cout << "-----------------------------------------------------------------" << endl;
-    cout << "TOTAL                 $" << g.plata_final_banco << "        $"     << w.plata_final_banco << endl << endl;
-    cout << "GANADOR: "               << ganador             << endl            << endl;
 
     //Busqueda del ganador para agregar al ranking
-    if (w.plata_final_banco > g.plata_final_banco) {
+    if (j1.plata_final_banco > j2.plata_final_banco) {
         // Si el Jugador 1 fue el ganador
-        evaluarYAgregarAlRanking(puntajes, w.nombre, w.plata_final_banco);
+        ganador = j1.nombre;
+        evaluarYAgregarAlRanking(puntajes, j1.nombre, j1.plata_final_banco);
     }
-    else if (g.plata_final_banco > w.plata_final_banco) {
+    else if (j2.plata_final_banco > j1.plata_final_banco) {
         // Si el Jugador 2 fue el ganador
-        evaluarYAgregarAlRanking(puntajes, g.nombre, g.plata_final_banco);
+        ganador = j2.nombre;
+        evaluarYAgregarAlRanking(puntajes, j2.nombre, j2.plata_final_banco);
     }
     else {
         // En caso de un empate, desempatamos por los kilos de cristal azul
-        if (w.kilos_azul_total > g.kilos_azul_total) {
-            evaluarYAgregarAlRanking(puntajes, w.nombre, w.plata_final_banco);
+        if (j1.kilos_azul_total > j2.kilos_azul_total) {
+            ganador = j1.nombre;
+            evaluarYAgregarAlRanking(puntajes, j1.nombre, j1.plata_final_banco);
         }
-        else if (g.kilos_azul_total > w.kilos_azul_total) {
-            evaluarYAgregarAlRanking(puntajes, g.nombre, g.plata_final_banco);
+        else if (j2.kilos_azul_total > j1.kilos_azul_total) {
+            ganador = j2.nombre;
+            evaluarYAgregarAlRanking(puntajes, j2.nombre, j2.plata_final_banco);
+        }
+        else
+        {
+            ganador = "Empataron, Gus Fring los considera químicos excepcionales por igual y ambos comparten el control del superlaboratorio.";
+            evaluarYAgregarAlRanking(puntajes, j1.nombre, j1.plata_final_banco);
+            evaluarYAgregarAlRanking(puntajes, j2.nombre, j2.plata_final_banco);
         }
     }
 
-    pausar();
+    //Display de menu final
 
+    cout << "HITO                  " << j2.nombre             << "             " << j1.nombre << endl;
+    cout << "-----------------------------------------------------------------" << endl;
+    cout << "Dinero                $" << j2.plata_banco       << "        $"     << j1.plata_banco << endl;
+    cout << "A1A Car Wash          $" << j2.plata_turno_max   << "        $"     << j1.plata_turno_max << endl;
+    cout << "Negocio del imperio   $" << j2.favor_gus_total   << "        $"     << j1.favor_gus_total << endl;
+    cout << "Say My Name           $" << j2.cant_dia_plantado << "        $"     << j1.cant_dia_plantado << endl;
+    cout << "99.1%                 $" << tirada_perfectaj2    << "        $"     << tirada_perfectaj1 << endl;
+    cout << "It´s All Good Man     $" << j2.cant_allanado     << "        $"     << j1.cant_allanado << endl;
+    cout << "-----------------------------------------------------------------" << endl;
+    cout << "TOTAL                 $" << j2.plata_final_banco << "        $"     << j1.plata_final_banco << endl << endl;
+    cout << "GANADOR: "               << ganador             << endl            << endl;
+
+    pausar();
 
 }

@@ -1,6 +1,7 @@
 #include <iostream>
 #include "funciones.h"
 #include <ctime>
+#include <locale.h>
 
 using namespace std;
 
@@ -8,17 +9,15 @@ using namespace std;
 int main()
 {
     srand(time(0));
+    setlocale(LC_ALL, "Spanish");
     //Inicializacion del vector de puntajes
-    Puntaje puntajes[5] = {
-        {"", 0}, {"", 0}, {"", 0}, {"", 0}, {"", 0}
-    };
+    Puntaje puntajes[5] = {};
     //Vector de prueba para probar ordenamiento
-    // Puntaje puntajes[5] = {
-    //     {"Walter", 800000}, {"Jesse", 750000}, {"Tuco", 50000}, {"Saul", 450000}, {"Kim", 50000}
+    //Puntaje puntajes[5] = {
+    //     {"Walter", 800000}, {"Jesse", 750000}, {"Tuco", 500000}, {"Saul", 450000}, {"Kim", 50000}
     // };
 
     int opcion;
-    setlocale(LC_ALL, "Spanish");
 
     do{
 

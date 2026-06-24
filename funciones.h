@@ -58,6 +58,7 @@ void pedirNombres(Jugador &j1, Jugador &j2);
 int lanzarDados();
 
 void turno(Jugador &j, EstadoDia &dia);
+void probarDados(Jugador &j, EstadoDia &dia, int d1, int d2, int d3);
 
 void dibujarDados(int dados[3]);
 
@@ -75,6 +76,7 @@ void juego(Puntaje puntajes[5]);
 void condicionesJuego(Jugador &j, EstadoDia &dia, bool &continua, bool &primer_pasada, int num_dia);
 
 void mod_cartas(EstadoDia &e);
+void probarCarta(EstadoDia &e, int numeroDeCarta);
 
 void carta_la_mosca();
 void carta_mike();
@@ -83,10 +85,13 @@ void carta_science();
 void carta_saul();
 void carta_danger();
 
-void menuFinal(Jugador &g, Jugador &w, Puntaje puntajes[5]);
+void menuFinal(Jugador &j2, Jugador &j1, Puntaje puntajes[5]);
 
 void evaluarYAgregarAlRanking(Puntaje puntajes[5], string nombreGanador, float dineroGanador);
 
+void separadorTematico(const string& tipo);
+string msgAleatorio(const string msgs[], int n);
+void mostrarMensajeAleatorio(const string& tipo);
 
 void estadisticas(const Puntaje Puntajes[5]);
 void creditos();
